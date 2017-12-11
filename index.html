@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAnJjHnuKA7DczzRyd3ujzaVBBqo4yGPkU",
+    authDomain: "labapp-16413.firebaseapp.com",
+    databaseURL: "https://labapp-16413.firebaseio.com",
+    projectId: "labapp-16413",
+    storageBucket: "labapp-16413.appspot.com",
+    messagingSenderId: "949129200569"
+  };
+  firebase.initializeApp(config);
+</script>
+1: School Info<br><br>
+School Name: <input type="text" id="field1" value="">
+<br>
+
+<br>
+Day: <input type="text" id="field2" value="">
+Visit Date: <input type="text" id="field3" value="">
+Number of teachers: <input type="text" id="field4" value="">
+
+<br><br><br>
+
+2: Laboratories<br><br>
+PhysicsLab: <input type="checkbox" id="myCheck"><br>
+ChemistryLab: <input type="checkbox" id="myCheck"><br>
+BiologyLab: <input type="checkbox" id="myCheck"><br><br>
+Computer: <input type="text" id="field5" value="">
+Projecter: <input type="text" id="field6" value="">
+
+<br><br><br>
+<button onclick="SchoolFunction()">Save</button>
+
+<script>
+function SchoolFunction() {
+
+var getDay = document.getElementById("field2").value
+var getVisit = document.getElementById("field3").value
+var getNumberOf = document.getElementById("field4").value
+var getC = document.getElementById("field5").value
+var getP = document.getElementById("field6").value
+var data = { Day: getDay, Visit: getVisit, NumberOf:getNumberOf };
+var dataLab = { Computer: getC, Project: getP };
+var ff = document.getElementById("field1").value
+var SchoolName = ff;
+var MyPath = firebase.database().ref('Schools/' + SchoolName);
+MyPath.set(data)
+var MyPath2 = firebase.database().ref('Schools/' + ff + '/' + "PhysicsLab");
+MyPath2.set(dataLab)
+}
+</script>
+
+</script>
+</body>
+</html>
